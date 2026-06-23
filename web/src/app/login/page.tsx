@@ -1,12 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Mail, Lock, Loader2, LogIn, Shield } from 'lucide-react';
+import { Mail, Lock, Loader2, LogIn, Shield, Eye, EyeOff } from 'lucide-react';
 import styles from './login.module.css';
 
 const loginSchema = z.object({
@@ -17,11 +17,12 @@ const loginSchema = z.object({
 
 type LoginFormValues = z.infer<typeof loginSchema>;
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
@@ -114,12 +115,21 @@ export default function LoginPage() {
               <Lock className={styles.inputIcon} size={18} />
               <input
                 id="password"
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 placeholder="••••••••"
                 className={`${styles.input} ${errors.password ? styles.inputError : ''}`}
                 {...register('password')}
                 disabled={loading}
               />
+              <button
+                type="button"
+                className={styles.eyeButton}
+                onClick={() => setShowPassword(!showPassword)}
+                disabled={loading}
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
             </div>
             {errors.password && <span className={styles.errorText}>{errors.password.message}</span>}
           </div>
@@ -162,5 +172,17 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', backgroundColor: 'var(--background)' }}>
+        <Loader2 className="animate-spin" size={32} style={{ color: 'var(--primary)' }} />
+      </div>
+    }>
+      <LoginForm />
+    </Suspense>
   );
 }

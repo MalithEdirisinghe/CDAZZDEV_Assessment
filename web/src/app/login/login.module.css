@@ -86,8 +86,31 @@
 
 .input {
   width: 100%;
-  padding: 10px 12px 10px 38px;
+  padding: 10px 38px 10px 38px;
   border-radius: var(--radius-input);
+}
+
+.eyeButton {
+  position: absolute;
+  right: var(--space-12);
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  transition: color 0.2s;
+}
+
+.eyeButton:hover {
+  color: var(--foreground);
+}
+
+.eyeButton:focus {
+  outline: none;
 }
 
 .inputError {

@@ -6,16 +6,14 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Mail, Lock, User, ShieldAlert, Loader2, UserPlus, Shield } from 'lucide-react';
+import { Mail, Lock, User, ShieldAlert, Loader2, UserPlus, Shield, Eye, EyeOff } from 'lucide-react';
 import styles from '../login/login.module.css';
 
 const registerSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
   email: z.string().email('Please enter a valid email address'),
   password: z.string().min(6, 'Password must be at least 6 characters'),
-  role: z.enum(['ADMIN', 'MANAGER', 'MEMBER'], {
-    errorMap: () => ({ message: 'Please select a valid role' }),
-  }),
+  role: z.enum(['ADMIN', 'MANAGER', 'MEMBER']),
 });
 
 type RegisterFormValues = z.infer<typeof registerSchema>;
@@ -25,6 +23,7 @@ export default function RegisterPage() {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
@@ -139,12 +138,21 @@ export default function RegisterPage() {
               <Lock className={styles.inputIcon} size={18} />
               <input
                 id="password"
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 placeholder="••••••••"
                 className={`${styles.input} ${errors.password ? styles.inputError : ''}`}
                 {...register('password')}
                 disabled={loading || success}
               />
+              <button
+                type="button"
+                className={styles.eyeButton}
+                onClick={() => setShowPassword(!showPassword)}
+                disabled={loading || success}
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
             </div>
             {errors.password && <span className={styles.errorText}>{errors.password.message}</span>}
           </div>

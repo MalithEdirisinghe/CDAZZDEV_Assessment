@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import useSWR, { useSWRConfig } from 'swr';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
@@ -33,7 +33,7 @@ interface User {
   role: 'ADMIN' | 'MANAGER' | 'MEMBER';
 }
 
-export default function DashboardPage() {
+function DashboardContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const { mutate } = useSWRConfig();
@@ -127,7 +127,7 @@ export default function DashboardPage() {
         ...values,
         description: values.description || undefined,
         assigneeId: values.assigneeId === '' ? undefined : values.assigneeId,
-        dueDate: values.dueDate === '' ? undefined : new Date(values.dueDate).toISOString(),
+        dueDate: (values.dueDate && values.dueDate !== '') ? new Date(values.dueDate).toISOString() : undefined,
       };
 
       const res = await fetch(`/api/proxy/projects/${projectId}/tasks`, {
@@ -496,5 +496,17 @@ export default function DashboardPage() {
         </div>
       )}
     </main>
+  );
+}
+
+export default function DashboardPage() {
+  return (
+    <Suspense fallback={
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '50vh' }}>
+        <Loader2 className="animate-spin" size={32} style={{ color: 'var(--primary)' }} />
+      </div>
+    }>
+      <DashboardContent />
+    </Suspense>
   );
 }
