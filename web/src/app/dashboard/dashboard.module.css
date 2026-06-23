@@ -1,0 +1,544 @@
+.layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: var(--background);
+}
+
+/* Sidebar Styling */
+.sidebar {
+  width: 280px;
+  background-color: var(--sidebar-bg);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.3s ease;
+  z-index: 100;
+}
+
+.sidebarHeader {
+  padding: var(--space-24) var(--space-16);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.userInfo {
+  padding: var(--space-16);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  background-color: rgba(37, 99, 235, 0.02);
+}
+
+.userName {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.userRole {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.roleADMIN {
+  background-color: rgba(220, 38, 38, 0.1);
+  color: var(--danger);
+}
+
+.roleMANAGER {
+  background-color: rgba(217, 119, 6, 0.1);
+  color: var(--warning);
+}
+
+.roleMEMBER {
+  background-color: rgba(37, 99, 235, 0.1);
+  color: var(--primary);
+}
+
+.navSection {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-16) var(--space-12);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-8);
+}
+
+.sectionTitle {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.addBtn {
+  background: transparent;
+  color: var(--primary);
+  padding: var(--space-4);
+  border-radius: 4px;
+}
+
+.addBtn:hover {
+  background-color: rgba(37, 99, 235, 0.05);
+}
+
+.projectList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  list-style: none;
+}
+
+.projectItem {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: var(--radius-input);
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  color: var(--foreground);
+  background: transparent;
+  text-align: left;
+}
+
+.projectItem:hover {
+  background-color: var(--gray-100);
+}
+
+.projectActive {
+  background-color: rgba(37, 99, 235, 0.08) !important;
+  color: var(--primary) !important;
+  font-weight: 600;
+}
+
+.sidebarFooter {
+  padding: var(--space-16);
+  border-top: 1px solid var(--border);
+}
+
+.logoutBtn {
+  width: 100%;
+  padding: 10px;
+  background-color: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+}
+
+.logoutBtn:hover {
+  background-color: rgba(220, 38, 38, 0.05);
+  color: var(--danger);
+  border-color: rgba(220, 38, 38, 0.15);
+}
+
+/* Main Content Area */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.header {
+  height: 64px;
+  border-bottom: 1px solid var(--border);
+  background-color: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-24);
+}
+
+.menuBtn {
+  background: transparent;
+  padding: var(--space-8);
+  border-radius: 4px;
+  display: none;
+}
+
+.menuBtn:hover {
+  background-color: var(--gray-100);
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-32) var(--space-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+/* Dashboard Tasks Area */
+.projectTitleSection {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-16);
+}
+
+.projectInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.projectDesc {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.createTaskBtn {
+  padding: 10px 16px;
+  background-color: var(--primary);
+  color: #ffffff;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.createTaskBtn:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Filters Section */
+.filtersCard {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: var(--space-16);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-16);
+  align-items: flex-end;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  flex: 1;
+  min-width: 140px;
+}
+
+.filterLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.filterSelect {
+  width: 100%;
+  padding: 8px 10px;
+  height: 38px;
+}
+
+/* Tasks Table/List Area */
+.tasksList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.taskCard {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: var(--space-16) var(--space-24);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-16);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.taskCard:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+}
+
+.taskMain {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  flex: 1;
+}
+
+.taskTitle {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.taskDescSnippet {
+  color: var(--text-muted);
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 480px;
+}
+
+.taskMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+}
+
+.badge {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 12px;
+  text-transform: uppercase;
+}
+
+.badgeTODO {
+  background-color: var(--gray-100);
+  color: var(--gray-700);
+}
+
+.badgeIN_PROGRESS {
+  background-color: rgba(37, 99, 235, 0.08);
+  color: var(--primary);
+}
+
+.badgeDONE {
+  background-color: rgba(22, 163, 74, 0.08);
+  color: var(--success);
+}
+
+.priorityBadge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.priorityHIGH {
+  color: var(--danger);
+}
+
+.priorityMEDIUM {
+  color: var(--warning);
+}
+
+.priorityLOW {
+  color: var(--success);
+}
+
+.dueDateInfo {
+  font-size: 13px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.assigneeBadge {
+  font-size: 13px;
+  font-weight: 500;
+  background-color: var(--gray-100);
+  padding: 4px 8px;
+  border-radius: var(--radius-input);
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.emptyState {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: var(--space-48) var(--space-24);
+  text-align: center;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.emptyText {
+  color: var(--text-muted);
+}
+
+/* Modal Overlay & Card */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-16);
+}
+
+.modal {
+  width: 100%;
+  max-width: 480px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: var(--space-24);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.closeBtn {
+  background: transparent;
+  color: var(--text-muted);
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-12);
+}
+
+.btnSecondary {
+  background-color: transparent;
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  color: var(--foreground);
+}
+
+.btnSecondary:hover {
+  background-color: var(--gray-100);
+}
+
+.btnPrimary {
+  background-color: var(--primary);
+  color: #ffffff;
+  padding: 8px 16px;
+}
+
+.btnPrimary:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Drawer Backdrop for Mobile */
+.drawerBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 90;
+  display: none;
+}
+
+/* Pagination Section */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--space-12);
+}
+
+.pageBtn {
+  background-color: transparent;
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pageBtn:hover:not(:disabled) {
+  background-color: var(--gray-100);
+}
+
+.pageBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pageInfo {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .menuBtn {
+    display: block;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    transform: translateX(-100%);
+  }
+
+  .sidebarOpen {
+    transform: translateX(0);
+  }
+
+  .drawerBackdropOpen {
+    display: block;
+  }
+
+  .taskCard {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .taskMeta {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}

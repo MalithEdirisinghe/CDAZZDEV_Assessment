@@ -1,0 +1,210 @@
+.container {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-32) var(--space-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.backBtn {
+  background: transparent;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  width: fit-content;
+  font-size: 14px;
+}
+
+.backBtn:hover {
+  color: var(--primary);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-24);
+  align-items: start;
+}
+
+/* Left column details card */
+.detailsCard {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: var(--space-24);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.titleArea {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.titleInput {
+  font-size: 24px;
+  font-weight: 700;
+  border: 1px solid transparent;
+  background: transparent;
+  padding: 4px var(--space-8);
+  margin-left: -8px;
+  width: 100%;
+}
+
+.titleInput:focus {
+  border-color: var(--border);
+  background: var(--background);
+}
+
+.descriptionArea {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: var(--space-24);
+}
+
+.descriptionLabel {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.descriptionText {
+  font-size: 15px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.descriptionTextarea {
+  width: 100%;
+  min-height: 120px;
+  padding: var(--space-12);
+  resize: vertical;
+}
+
+/* Comments section */
+.commentsArea {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.commentsTitle {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.commentsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.commentItem {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: var(--space-12);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.commentHeader {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.commentAuthor {
+  font-weight: 600;
+}
+
+.commentTime {
+  color: var(--text-muted);
+}
+
+.commentBody {
+  font-size: 14px;
+  color: var(--foreground);
+}
+
+.commentForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  margin-top: var(--space-12);
+}
+
+.commentTextarea {
+  width: 100%;
+  min-height: 80px;
+  padding: var(--space-12);
+  resize: none;
+}
+
+.commentBtn {
+  align-self: flex-end;
+  padding: 8px 16px;
+  background-color: var(--primary);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.commentBtn:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Right column control sidebar */
+.controlCard {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: var(--space-24);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.controlGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.controlLabel {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.controlSelect {
+  width: 100%;
+  padding: 10px var(--space-12);
+  height: 42px;
+}
+
+.dueDateDisplay {
+  padding: 10px var(--space-12);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-input);
+  background-color: var(--gray-50);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
