@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { 
   StyleSheet, Text, View, TextInput, TouchableOpacity, 
   FlatList, ActivityIndicator, SafeAreaView, StatusBar, 
-  RefreshControl, Platform, ScrollView, Alert, Switch
+  RefreshControl, Platform, ScrollView, Alert, Switch, KeyboardAvoidingView
 } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
 import { Ionicons } from '@expo/vector-icons';
@@ -330,78 +330,83 @@ export default function App() {
   // Render Login Screen
   const renderLogin = () => (
     <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollContainer} keyboardShouldPersistTaps="handled">
-        <View style={styles.authCard}>
-          <Text style={styles.authLogo}>TeamSync</Text>
-          <Text style={styles.authTitle}>Mobile Companion</Text>
-          <Text style={styles.authSubtitle}>Sign in to view your assigned tasks</Text>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={{ flex: 1 }}
+      >
+        <ScrollView contentContainerStyle={styles.scrollContainer} keyboardShouldPersistTaps="handled">
+          <View style={styles.authCard}>
+            <Text style={styles.authLogo}>TeamSync</Text>
+            <Text style={styles.authTitle}>Mobile Companion</Text>
+            <Text style={styles.authSubtitle}>Sign in to view your assigned tasks</Text>
 
-          <View style={styles.inputGroup}>
-            <Text style={styles.label}>API Server Base URL</Text>
-            <TextInput
-              style={styles.input}
-              value={apiUrl}
-              onChangeText={setApiUrl}
-              placeholder="http://192.168.1.XX:3000"
-              autoCapitalize="none"
-              autoCorrect={false}
-            />
-            <Text style={styles.helpText}>
-              Emulators: 10.0.2.2:3000. Devices: use host IP (e.g. 192.168.1.10:3000).
-            </Text>
-          </View>
-
-          <View style={styles.inputGroup}>
-            <Text style={styles.label}>Email Address</Text>
-            <TextInput
-              style={styles.input}
-              value={email}
-              onChangeText={setEmail}
-              placeholder="you@example.com"
-              keyboardType="email-address"
-              autoCapitalize="none"
-              autoCorrect={false}
-            />
-          </View>
-
-          <View style={styles.inputGroup}>
-            <Text style={styles.label}>Password</Text>
-            <View style={styles.passwordContainer}>
+            <View style={styles.inputGroup}>
+              <Text style={styles.label}>API Server Base URL</Text>
               <TextInput
-                style={styles.passwordInput}
-                value={password}
-                onChangeText={setPassword}
-                placeholder="••••••••"
-                secureTextEntry={!showPassword}
+                style={styles.input}
+                value={apiUrl}
+                onChangeText={setApiUrl}
+                placeholder="http://192.168.1.XX:3000"
                 autoCapitalize="none"
                 autoCorrect={false}
               />
-              <TouchableOpacity 
-                style={styles.eyeButton}
-                onPress={() => setShowPassword(!showPassword)}
-              >
-                <Ionicons 
-                  name={showPassword ? 'eye-off-outline' : 'eye-outline'} 
-                  size={20} 
-                  color="#64748B" 
-                />
-              </TouchableOpacity>
+              <Text style={styles.helpText}>
+                Emulators: 10.0.2.2:3000. Devices: use host IP (e.g. 192.168.1.10:3000).
+              </Text>
             </View>
-          </View>
 
-          <TouchableOpacity 
-            style={[styles.btnPrimary, authLoading && styles.btnDisabled]} 
-            onPress={handleLogin}
-            disabled={authLoading}
-          >
-            {authLoading ? (
-              <ActivityIndicator color="#fff" size="small" />
-            ) : (
-              <Text style={styles.btnText}>Sign In</Text>
-            )}
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
+            <View style={styles.inputGroup}>
+              <Text style={styles.label}>Email Address</Text>
+              <TextInput
+                style={styles.input}
+                value={email}
+                onChangeText={setEmail}
+                placeholder="you@example.com"
+                keyboardType="email-address"
+                autoCapitalize="none"
+                autoCorrect={false}
+              />
+            </View>
+
+            <View style={styles.inputGroup}>
+              <Text style={styles.label}>Password</Text>
+              <View style={styles.passwordContainer}>
+                <TextInput
+                  style={styles.passwordInput}
+                  value={password}
+                  onChangeText={setPassword}
+                  placeholder="••••••••"
+                  secureTextEntry={!showPassword}
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                />
+                <TouchableOpacity 
+                  style={styles.eyeButton}
+                  onPress={() => setShowPassword(!showPassword)}
+                >
+                  <Ionicons 
+                    name={showPassword ? 'eye-off-outline' : 'eye-outline'} 
+                    size={20} 
+                    color="#64748B" 
+                  />
+                </TouchableOpacity>
+              </View>
+            </View>
+
+            <TouchableOpacity 
+              style={[styles.btnPrimary, authLoading && styles.btnDisabled]} 
+              onPress={handleLogin}
+              disabled={authLoading}
+            >
+              {authLoading ? (
+                <ActivityIndicator color="#fff" size="small" />
+              ) : (
+                <Text style={styles.btnText}>Sign In</Text>
+              )}
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 
