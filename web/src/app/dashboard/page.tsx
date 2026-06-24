@@ -387,7 +387,6 @@ function DashboardContent() {
                   type="text"
                   placeholder="e.g. Implement middleware routing"
                   className={`${styles.input} ${errors.title ? styles.inputError : ''}`}
-                  style={{ padding: '10px 12px' }}
                   {...register('title')}
                   disabled={taskLoading}
                 />
@@ -400,7 +399,7 @@ function DashboardContent() {
                   id="taskDesc"
                   placeholder="Enter detailed description..."
                   className={styles.input}
-                  style={{ padding: '10px 12px', minHeight: '60px', resize: 'vertical' }}
+                  style={{ minHeight: '60px', resize: 'vertical' }}
                   {...register('description')}
                   disabled={taskLoading}
                 />
@@ -459,8 +458,7 @@ function DashboardContent() {
                   <input
                     id="taskDueDate"
                     type="date"
-                    className={styles.filterSelect}
-                    style={{ padding: '6px 10px' }}
+                    className={styles.dateInput}
                     {...register('dueDate')}
                     disabled={taskLoading}
                   />

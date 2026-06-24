@@ -542,3 +542,73 @@
     flex-wrap: wrap;
   }
 }
+
+/* Modal Form Controls styling */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.input {
+  width: 100%;
+  padding: 10px var(--space-12);
+  border-radius: var(--radius-input);
+  border: 1px solid var(--border);
+  background-color: var(--surface);
+  color: var(--foreground);
+}
+
+.inputError {
+  border-color: var(--danger) !important;
+}
+
+.errorText {
+  font-size: 12px;
+  color: var(--danger);
+  margin-top: 2px;
+}
+
+.alert {
+  padding: var(--space-12);
+  border-radius: var(--radius-input);
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.alertError {
+  background-color: rgba(220, 38, 38, 0.08);
+  border: 1px solid rgba(220, 38, 38, 0.15);
+  color: var(--danger);
+}
+
+.dateInput {
+  width: 100%;
+  padding: 8px 12px;
+  height: 38px;
+  border-radius: var(--radius-input);
+  border: 1px solid var(--border);
+  background-color: var(--surface);
+  color: var(--foreground);
+}
+
+@media (prefers-color-scheme: dark) {
+  .dateInput {
+    color-scheme: dark;
+  }
+}
