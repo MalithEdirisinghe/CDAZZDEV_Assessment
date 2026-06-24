@@ -1,5 +1,8 @@
 # TeamSync — Full-Stack Project & Task Tracker
 
+> [!IMPORTANT]
+> **Technical Assessment Submission**: [Watch the Video Walkthrough on Loom](https://www.loom.com/share/134c272b18bc4188ab4f0d205be1ba87)
+
 TeamSync is a lightweight, responsive, and secure project and task tracking application built for CDAZZDEV's technical assessment. The platform consists of:
 1.  **Backend REST API** (NestJS, Prisma, PostgreSQL, Jest, Swagger).
 2.  **Web Application** (Next.js App Router, CSS Modules, SWR, BFF Proxy, Zod).
