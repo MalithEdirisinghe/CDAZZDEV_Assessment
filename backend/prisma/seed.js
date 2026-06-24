@@ -65,6 +65,7 @@ async function main() {
     data: [
       { projectId: project.id, userId: manager.id, role: MemberRole.MANAGER },
       { projectId: project.id, userId: member.id, role: MemberRole.MEMBER },
+      { projectId: project.id, userId: admin.id, role: MemberRole.MEMBER },
     ],
   });
 
