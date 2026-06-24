@@ -195,7 +195,7 @@
   padding: 10px var(--space-12);
   border: 1px solid var(--border);
   border-radius: var(--radius-input);
-  background-color: var(--gray-50);
+  background-color: var(--background);
   font-size: 14px;
   display: flex;
   align-items: center;
