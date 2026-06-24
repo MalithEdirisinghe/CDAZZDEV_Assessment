@@ -5,6 +5,7 @@ import {
   RefreshControl, Platform, ScrollView, Alert, Switch
 } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
+import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { saveTokens, getAccessToken, clearTokens } from './src/utils/SecureStorageHelper';
 import { cacheTasks, getCachedTasks } from './src/utils/CacheHelper';
@@ -52,6 +53,7 @@ export default function App() {
   // Auth State
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [authLoading, setAuthLoading] = useState(false);
 
@@ -364,15 +366,27 @@ export default function App() {
 
           <View style={styles.inputGroup}>
             <Text style={styles.label}>Password</Text>
-            <TextInput
-              style={styles.input}
-              value={password}
-              onChangeText={setPassword}
-              placeholder="••••••••"
-              secureTextEntry
-              autoCapitalize="none"
-              autoCorrect={false}
-            />
+            <View style={styles.passwordContainer}>
+              <TextInput
+                style={styles.passwordInput}
+                value={password}
+                onChangeText={setPassword}
+                placeholder="••••••••"
+                secureTextEntry={!showPassword}
+                autoCapitalize="none"
+                autoCorrect={false}
+              />
+              <TouchableOpacity 
+                style={styles.eyeButton}
+                onPress={() => setShowPassword(!showPassword)}
+              >
+                <Ionicons 
+                  name={showPassword ? 'eye-off-outline' : 'eye-outline'} 
+                  size={20} 
+                  color="#64748B" 
+                />
+              </TouchableOpacity>
+            </View>
           </View>
 
           <TouchableOpacity 
@@ -595,7 +609,7 @@ export default function App() {
                   value={newCommentBody}
                   onChangeText={setNewCommentBody}
                   multiline
-                  disabled={isOffline}
+                  editable={!isOffline}
                 />
                 <TouchableOpacity 
                   style={[styles.btnPrimary, { marginTop: 12 }, isOffline && styles.btnDisabled]}
@@ -685,6 +699,25 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     fontSize: 15,
     color: '#0F172A',
+  },
+  passwordContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+    borderRadius: 6,
+    paddingRight: 12,
+  },
+  passwordInput: {
+    flex: 1,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    fontSize: 15,
+    color: '#0F172A',
+  },
+  eyeButton: {
+    padding: 4,
   },
   helpText: {
     fontSize: 11,
