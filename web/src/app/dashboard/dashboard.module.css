@@ -373,7 +373,9 @@
 .assigneeBadge {
   font-size: 13px;
   font-weight: 500;
-  background-color: var(--gray-100);
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  color: var(--foreground);
   padding: 4px 8px;
   border-radius: var(--radius-input);
   max-width: 120px;
@@ -611,5 +613,14 @@
 @media (prefers-color-scheme: dark) {
   .dateInput {
     color-scheme: dark;
+  }
+  .projectItem:hover {
+    background-color: var(--border);
+  }
+  .pageBtn:hover:not(:disabled) {
+    background-color: var(--border);
+  }
+  .btnSecondary:hover {
+    background-color: var(--border);
   }
 }
