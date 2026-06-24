@@ -183,6 +183,7 @@
   padding: var(--space-8);
   border-radius: 4px;
   display: none;
+  color: var(--foreground);
 }
 
 .menuBtn:hover {
